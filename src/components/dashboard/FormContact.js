@@ -10,7 +10,13 @@ const FormContact = () => {
 
   const onSubmit = e => {
     e.preventDefault();
-    console.log(name, email, phone, radio);
+    const contact = {
+      name: name,
+      email: email,
+      phone: phone,
+      radio: radio
+    };
+    console.log(contact);
   };
   return (
     <div>
@@ -18,11 +24,19 @@ const FormContact = () => {
         <h5 className="grey-text text-darken-3 center">Add Contact</h5>
         <div className="input-field">
           <label htmlFor="name">Name</label>
-          <input type="text" id="name" />
+          <input
+            type="text"
+            id="name"
+            onChange={name => setName(name.target.value)}
+          />
         </div>
         <div className="input-field">
           <label htmlFor="email">Email</label>
-          <input type="email" id="email" />
+          <input
+            type="email"
+            id="email"
+            onChange={email => setEmail(email.target.value)}
+          />
         </div>
         <div className="input-field">
           <PhoneInput
@@ -35,18 +49,30 @@ const FormContact = () => {
         <div className="input-field">
           <div>
             <label className="radio-btn">
-              <input className="with-gap" name="group1" type="radio" />
+              <input
+                className="with-gap"
+                name="group1"
+                type="radio"
+                onChange={() => setRadio("Personal")}
+              />
               <span>Personal</span>
             </label>
 
             <label className="radio-btn">
-              <input className="with-gap" name="group1" type="radio" />
+              <input
+                className="with-gap"
+                name="group1"
+                type="radio"
+                onChange={() => setRadio("Professional")}
+              />
               <span>Professional</span>
             </label>
           </div>
         </div>
         <div className="input-field center">
-          <button className="btn blue">Add Contact</button>
+          <button className="btn blue" onClick={onSubmit}>
+            Add Contact
+          </button>
         </div>
       </form>
     </div>

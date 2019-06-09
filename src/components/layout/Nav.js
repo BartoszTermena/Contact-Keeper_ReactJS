@@ -7,7 +7,7 @@ const Nav = () => {
   return (
     <nav className="nav-wrapper blue">
       <Link to="/" className="brand-logo left">
-        <i className="fas fa-id-card-alt" />
+        <i className="material-icons logo-icon">contacts</i>
         Contact Keeper
       </Link>
       <SignedInLink />

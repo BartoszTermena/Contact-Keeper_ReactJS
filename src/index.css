@@ -21,3 +21,16 @@ code {
 .radio-btn {
   padding: 0.5rem 0.5rem;
 }
+.card-status {
+  color: #32cd32;
+  text-transform: capitalize;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.3rem 0.7rem;
+  font-size: 1.2rem;
+}
+.logo-icon {
+  padding: 0.3rem;
+  font-size: 2.5rem !important;
+}

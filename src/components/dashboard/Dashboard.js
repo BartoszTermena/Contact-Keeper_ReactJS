@@ -6,10 +6,10 @@ const Dashboard = () => {
   return (
     <Fragment>
       <div className="row dashboard">
-        <div className="col s12 m6">
+        <div className="col s12 m5">
           <FormContact />
         </div>
-        <div className="col s12 m5 offset-m1">
+        <div className="col s12 m6 offset-m1">
           <Contacts />
         </div>
       </div>
