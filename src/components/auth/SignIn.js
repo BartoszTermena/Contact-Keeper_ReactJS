@@ -15,7 +15,7 @@ const SignIn = props => {
     console.log(email, password);
   };
   return (
-    <div className="container">
+    <div className="container dashboard">
       <form className="white" onSubmit={handleSubmit}>
         <h5 className="grey-text text-darken-3">Sign In</h5>
         <div className="input-field">
@@ -30,8 +30,8 @@ const SignIn = props => {
             onChange={e => handleChangePassword(e)}
           />
         </div>
-        <div className="input-field">
-          <button className="btn pink lighten-1 z-depth-0">Login</button>
+        <div className="input-field center">
+          <button className="btn blue">Login</button>
         </div>
       </form>
     </div>

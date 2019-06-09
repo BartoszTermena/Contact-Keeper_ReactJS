@@ -5,6 +5,7 @@
   "dependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-phone-number-input": "^2.3.14",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1"
   },
