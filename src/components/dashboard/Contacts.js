@@ -1,12 +1,13 @@
 import React from "react";
 import ContactSummary from "./ContactSummary";
 
-const Contacts = () => {
+const Contacts = ({ contacts }) => {
   return (
     <div className="contact-list section">
-      <ContactSummary />
-      <ContactSummary />
-      <ContactSummary />
+      {contacts &&
+        contacts.map(contact => {
+          return <ContactSummary contact={contact} />;
+        })}
     </div>
   );
 };

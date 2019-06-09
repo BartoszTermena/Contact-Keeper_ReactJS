@@ -1,8 +1,10 @@
 import React, { Fragment } from "react";
 import FormContact from "./FormContact";
 import Contacts from "./Contacts";
+import { connect } from "react-redux";
 
-const Dashboard = () => {
+const Dashboard = props => {
+  const { contacts } = props;
   return (
     <Fragment>
       <div className="row dashboard">
@@ -10,11 +12,17 @@ const Dashboard = () => {
           <FormContact />
         </div>
         <div className="col s12 m6 offset-m1">
-          <Contacts />
+          <Contacts contacts={contacts} />
         </div>
       </div>
     </Fragment>
   );
 };
 
-export default Dashboard;
+const mapStateToProps = state => {
+  return {
+    contacts: state.contact.contacts
+  };
+};
+
+export default connect(mapStateToProps)(Dashboard);
