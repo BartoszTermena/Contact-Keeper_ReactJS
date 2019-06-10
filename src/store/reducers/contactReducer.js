@@ -27,8 +27,13 @@ const contactReducer = (state = initState, action) => {
   switch (action.type) {
     case "CREATE_CONTACT":
       console.log(action.contact);
+      return state;
+    case "CREATE_CONTACT_ERROR":
+      console.log(action.err);
+      return state;
+    default:
+      return state;
   }
-  return state;
 };
 
 export default contactReducer;

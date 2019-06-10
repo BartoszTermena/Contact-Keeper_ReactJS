@@ -9,15 +9,15 @@ const FormContact = props => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("+48");
-  const [radio, setRadio] = useState("");
+  const [type, setType] = useState("");
 
   const onSubmit = e => {
     e.preventDefault();
     const contact = {
-      name: name,
       email: email,
+      name: name,
       phone: phone,
-      radio: radio
+      type: type
     };
     props.createContact(contact);
   };
@@ -56,7 +56,7 @@ const FormContact = props => {
                 className="with-gap"
                 name="group1"
                 type="radio"
-                onChange={() => setRadio("Personal")}
+                onChange={() => setType("Personal")}
               />
               <span>Personal</span>
             </label>
@@ -66,7 +66,7 @@ const FormContact = props => {
                 className="with-gap"
                 name="group1"
                 type="radio"
-                onChange={() => setRadio("Professional")}
+                onChange={() => setType("Professional")}
               />
               <span>Professional</span>
             </label>
