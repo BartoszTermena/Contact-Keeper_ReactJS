@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+
+import { createContact } from "../../store/actions/contactActions";
+import { connect } from "react-redux";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 
-const FormContact = () => {
+const FormContact = props => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("+48");
@@ -16,7 +19,7 @@ const FormContact = () => {
       phone: phone,
       radio: radio
     };
-    console.log(contact);
+    props.createContact(contact);
   };
   return (
     <div>
@@ -79,4 +82,13 @@ const FormContact = () => {
   );
 };
 
-export default FormContact;
+const mapDispatchToProps = dispatch => {
+  return {
+    createContact: contact => dispatch(createContact(contact))
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(FormContact);

@@ -24,6 +24,10 @@ const initState = {
   ]
 };
 const contactReducer = (state = initState, action) => {
+  switch (action.type) {
+    case "CREATE_CONTACT":
+      console.log(action.contact);
+  }
   return state;
 };
 
