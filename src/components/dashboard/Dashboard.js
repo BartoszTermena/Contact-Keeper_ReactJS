@@ -2,6 +2,8 @@ import React, { Fragment } from "react";
 import FormContact from "./FormContact";
 import Contacts from "./Contacts";
 import { connect } from "react-redux";
+import { firestoreConnect } from "react-redux-firebase";
+import { compose } from "redux";
 
 const Dashboard = props => {
   const { contacts } = props;
@@ -21,8 +23,11 @@ const Dashboard = props => {
 
 const mapStateToProps = state => {
   return {
-    contacts: state.contact.contacts
+    contacts: state.firestore.ordered.contacts
   };
 };
 
-export default connect(mapStateToProps)(Dashboard);
+export default compose(
+  connect(mapStateToProps),
+  firestoreConnect([{ collection: "contacts" }])
+)(Dashboard);

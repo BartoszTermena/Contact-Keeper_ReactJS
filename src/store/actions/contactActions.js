@@ -5,8 +5,6 @@ export const createContact = contact => {
       .collection("contacts")
       .add({
         ...contact,
-        authorFirstName: "Net",
-        authorLastName: "Johnson",
         authorId: 12345,
         createdAt: new Date()
       })
