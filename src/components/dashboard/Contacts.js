@@ -6,7 +6,7 @@ const Contacts = ({ contacts }) => {
     <div className="contact-list section">
       {contacts &&
         contacts.map(contact => {
-          return <ContactSummary contact={contact} />;
+          return <ContactSummary contact={contact} key={contact.id} />;
         })}
     </div>
   );
