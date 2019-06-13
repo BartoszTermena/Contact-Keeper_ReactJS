@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 
 const SignedInLinks = props => {
   return (
-    <ul className="right hide-on-med-and-down">
+    <ul className="right">
       <li>
         <NavLink to="/" onClick={props.signOut}>
           Log Out

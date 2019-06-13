@@ -4,9 +4,11 @@ import Contacts from "./Contacts";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
+import { Redirect } from "react-router-dom";
 
 const Dashboard = props => {
-  const { contacts } = props;
+  const { contacts, auth } = props;
+  if (!auth.uid) return <Redirect to="/signin" />;
   return (
     <Fragment>
       <div className="row dashboard">
@@ -23,6 +25,7 @@ const Dashboard = props => {
 
 const mapStateToProps = state => {
   return {
+    auth: state.firebase.auth,
     contacts: state.firestore.ordered.contacts
   };
 };

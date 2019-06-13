@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { signIn } from "../../store/actions/authActions";
+import { Redirect } from "react-router-dom";
 
 const SignIn = props => {
   const [email, setEmail] = useState("");
@@ -20,6 +21,8 @@ const SignIn = props => {
     };
     props.signIn(user);
   };
+  const { auth } = props;
+  if (auth.uid) return <Redirect to="/" />;
   return (
     <div className="container dashboard">
       <form className="white" onSubmit={handleSubmit}>
@@ -37,7 +40,9 @@ const SignIn = props => {
           />
         </div>
         <div className="input-field center">
-          <button className="btn blue">Login</button>
+          <button onClick={handleSubmit} className="btn blue">
+            Login
+          </button>
           <div className="red-text center">
             {props.authError ? <p>{props.authError}</p> : null}
           </div>
@@ -49,7 +54,8 @@ const SignIn = props => {
 
 const mapStateToProps = state => {
   return {
-    authError: state.auth.authError
+    authError: state.auth.authError,
+    auth: state.firebase.auth
   };
 };
 
