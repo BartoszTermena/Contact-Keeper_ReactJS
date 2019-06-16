@@ -7,9 +7,10 @@ import { compose } from "redux";
 import { Redirect } from "react-router-dom";
 import Loader from "../layout/loader/Loader";
 import NoContacts from "./NoContacts";
+import Toast from "./Toast";
 
 const Dashboard = props => {
-  const { contacts, auth } = props;
+  const { contacts, auth, notifications } = props;
   if (!auth.uid) return <Redirect to="/signin" />;
   if (!isLoaded(contacts)) {
     return (
@@ -42,6 +43,7 @@ const Dashboard = props => {
         </div>
         <div className="col s12 m6 offset-m1">
           <Contacts contacts={contacts} />
+          <Toast notifications={notifications} />
         </div>
       </div>
     </Fragment>
@@ -51,7 +53,8 @@ const Dashboard = props => {
 const mapStateToProps = state => {
   return {
     auth: state.firebase.auth,
-    contacts: state.firestore.ordered.contacts
+    contacts: state.firestore.ordered.contacts,
+    notifications: state.firestore.ordered.notifications
   };
 };
 
@@ -60,7 +63,8 @@ export default compose(
   firestoreConnect(props => {
     if (!props.auth.uid) return [];
     return [
-      { collection: "contacts", where: [["authorId", "==", props.auth.uid]] }
+      { collection: "contacts", where: [["authorId", "==", props.auth.uid]] },
+      { collection: "notifications", limit: 3 }
     ];
   })
 )(Dashboard);
