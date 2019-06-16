@@ -15,6 +15,13 @@ code {
 .dashboard {
   padding: 1rem 1rem;
 }
+.no-contacts {
+  text-align: center;
+  justify-content: center;
+  padding: 1rem 1rem;
+  font-size: 2rem;
+  color: grey;
+}
 .loader-dashboard {
   padding: 2rem 2rem;
   text-align: center;

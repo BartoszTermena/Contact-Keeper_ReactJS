@@ -26,7 +26,7 @@ const FormContact = props => {
       <form className="white" onSubmit={onSubmit}>
         <h5 className="grey-text text-darken-3 center">Add Contact</h5>
         <div className="input-field">
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name">Full Name</label>
           <input
             type="text"
             id="name"

@@ -6,6 +6,7 @@ import { firestoreConnect, isLoaded, isEmpty } from "react-redux-firebase";
 import { compose } from "redux";
 import { Redirect } from "react-router-dom";
 import Loader from "../layout/loader/Loader";
+import NoContacts from "./NoContacts";
 
 const Dashboard = props => {
   const { contacts, auth } = props;
@@ -25,6 +26,9 @@ const Dashboard = props => {
         <div className="row dashboard">
           <div className="col s12 m5">
             <FormContact />
+          </div>
+          <div className="col s12 m6 offset-m1">
+            <NoContacts />
           </div>
         </div>
       </Fragment>
