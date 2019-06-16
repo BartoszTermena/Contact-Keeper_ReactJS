@@ -1,11 +1,12 @@
 export const createContact = contact => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
+    const authorId = getState().firebase.auth.uid;
     firestore
       .collection("contacts")
       .add({
         ...contact,
-        authorId: 12345,
+        authorId: authorId,
         createdAt: new Date()
       })
       .then(() => {
