@@ -2,8 +2,6 @@ import React, { useState } from "react";
 
 import { createContact } from "../../store/actions/contactActions";
 import { connect } from "react-redux";
-import "react-phone-number-input/style.css";
-import PhoneInput from "react-phone-number-input";
 
 const FormContact = props => {
   const [name, setName] = useState("");

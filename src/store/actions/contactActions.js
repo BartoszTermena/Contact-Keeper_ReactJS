@@ -33,3 +33,19 @@ export const deleteContact = contactId => {
       });
   };
 };
+
+export const editContact = (contactId, contact) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firestore = getFirestore();
+    firestore
+      .collection("contacts")
+      .doc(contactId)
+      .update(contact)
+      .then(() => {
+        dispatch({ type: "EDIT_CONTACT", contactId });
+      })
+      .catch(err => {
+        dispatch({ type: "EDIT_CONTACT_ERROR", err });
+      });
+  };
+};

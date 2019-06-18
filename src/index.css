@@ -33,10 +33,24 @@ code {
 .radio-btn {
   padding: 0.5rem 0.5rem;
 }
+.edit-radio-btn {
+  padding: 0.2rem;
+  color: #fff;
+}
 .btn-action {
   cursor: pointer;
 }
-
+.edit-input {
+  max-width: 12rem;
+  color: #fff;
+  max-height: 1.2rem;
+}
+.material-icons {
+  margin-right: 1rem;
+}
+.contact-label {
+  margin-top: 1.5rem !important;
+}
 .card-status {
   color: #32cd32;
   text-transform: capitalize;
