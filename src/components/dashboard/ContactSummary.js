@@ -1,7 +1,9 @@
 import React, { Fragment } from "react";
 import moment from "moment";
+import { connect } from "react-redux";
+import { deleteContact } from "../../store/actions/contactActions";
 
-const ContactSummary = ({ contact }) => {
+const ContactSummary = ({ contact, deleteContact }) => {
   const { id, name, email, phone, type, createdAt } = contact;
   return (
     <Fragment>
@@ -22,11 +24,23 @@ const ContactSummary = ({ contact }) => {
           </p>
         </div>
         <div className="card-action">
-          <a>Edit</a>
-          <a>Delete</a>
+          <a className="btn-action">Edit</a>
+          <a className="btn-action" onClick={() => deleteContact(id)}>
+            Delete
+          </a>
         </div>
       </div>
     </Fragment>
   );
 };
-export default ContactSummary;
+
+const mapDispatchToProps = dispatch => {
+  return {
+    deleteContact: contactId => dispatch(deleteContact(contactId))
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(ContactSummary);

@@ -8,8 +8,11 @@ import PhoneInput from "react-phone-number-input";
 const FormContact = props => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("+48");
+  const [phone, setPhone] = useState("");
   const [type, setType] = useState("");
+
+  const isEnabled =
+    email.length > 0 && name.length > 0 && phone.length > 0 && type.length > 0;
 
   const onSubmit = e => {
     e.preventDefault();
@@ -42,11 +45,11 @@ const FormContact = props => {
           />
         </div>
         <div className="input-field">
-          <PhoneInput
-            placeholder="Enter phone number"
-            country="PL"
-            value={phone}
-            onChange={phone => setPhone(phone)}
+          <input
+            placeholder="Enter phone number (Format: 123-456-789) "
+            type="tel"
+            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+            onChange={phone => setPhone(phone.target.value)}
           />
         </div>
         <div className="input-field">
@@ -73,7 +76,7 @@ const FormContact = props => {
           </div>
         </div>
         <div className="input-field center">
-          <button className="btn blue" onClick={onSubmit}>
+          <button disabled={!isEnabled} className="btn blue" onClick={onSubmit}>
             Add Contact
           </button>
         </div>

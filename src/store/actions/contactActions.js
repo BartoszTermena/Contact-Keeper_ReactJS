@@ -17,3 +17,19 @@ export const createContact = contact => {
       });
   };
 };
+
+export const deleteContact = contactId => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firestore = getFirestore();
+    firestore
+      .collection("contacts")
+      .doc(contactId)
+      .delete()
+      .then(() => {
+        dispatch({ type: "DELETE_CONTACT", contactId });
+      })
+      .catch(err => {
+        dispatch({ type: "DELETE_CONTACT_ERROR", err });
+      });
+  };
+};

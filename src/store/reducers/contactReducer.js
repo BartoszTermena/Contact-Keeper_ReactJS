@@ -31,6 +31,12 @@ const contactReducer = (state = initState, action) => {
     case "CREATE_CONTACT_ERROR":
       console.log(action.err);
       return state;
+    case "DELETE_CONTACT":
+      console.log(action.contactId);
+      return state;
+    case "DELETE_CONTACT_ERROR":
+      console.log(action.err);
+      return state;
     default:
       return state;
   }

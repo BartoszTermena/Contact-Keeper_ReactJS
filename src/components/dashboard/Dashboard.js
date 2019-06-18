@@ -63,8 +63,11 @@ export default compose(
   firestoreConnect(props => {
     if (!props.auth.uid) return [];
     return [
-      { collection: "contacts", where: [["authorId", "==", props.auth.uid]] },
-      { collection: "notifications", limit: 3 }
+      {
+        collection: "contacts",
+        where: [["authorId", "==", props.auth.uid]]
+      },
+      { collection: "notifications", limit: 3, orderBy: ["time", "desc"] }
     ];
   })
 )(Dashboard);
