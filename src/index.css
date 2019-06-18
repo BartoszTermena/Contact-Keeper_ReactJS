@@ -36,6 +36,7 @@ code {
 .btn-action {
   cursor: pointer;
 }
+
 .card-status {
   color: #32cd32;
   text-transform: capitalize;
