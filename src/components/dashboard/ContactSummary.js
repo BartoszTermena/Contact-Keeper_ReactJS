@@ -3,13 +3,16 @@ import moment from "moment";
 import { connect } from "react-redux";
 import { deleteContact, editContact } from "../../store/actions/contactActions";
 
-const ContactSummary = ({ contact, deleteContact }) => {
+const ContactSummary = ({ contact, deleteContact, editContact }) => {
   const { id, name, email, phone, type, createdAt } = contact;
 
   const [edit, setEdit] = useState(false);
   const [editEmail, setEditEmail] = useState("");
   const [editPhone, setEditPhone] = useState("");
   const [editType, setEditType] = useState("");
+
+  const isEnabled =
+    editEmail.length > 0 && editPhone.length > 0 && editType.length > 0;
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -40,7 +43,7 @@ const ContactSummary = ({ contact, deleteContact }) => {
                 <Fragment>
                   <label className="edit-radio-btn">
                     <input
-                      className=""
+                      className="with-gap"
                       name="group1"
                       type="radio"
                       onChange={() => setEditType("Personal")}
@@ -50,7 +53,7 @@ const ContactSummary = ({ contact, deleteContact }) => {
 
                   <label className="edit-radio-btn">
                     <input
-                      className=""
+                      className="with-gap"
                       name="group1"
                       type="radio"
                       onChange={() => setEditType("Professional")}
@@ -67,6 +70,7 @@ const ContactSummary = ({ contact, deleteContact }) => {
               email
             ) : (
               <input
+                placeholder="email"
                 onChange={e => setEditEmail(e.target.value)}
                 className="edit-input"
               />
@@ -78,6 +82,7 @@ const ContactSummary = ({ contact, deleteContact }) => {
               phone
             ) : (
               <input
+                placeholder="(Format: 123-456-789) "
                 onChange={e => setEditPhone(e.target.value)}
                 className="edit-input"
               />
@@ -90,21 +95,31 @@ const ContactSummary = ({ contact, deleteContact }) => {
         <div className="card-action">
           {!edit ? (
             <Fragment>
-              <a className="btn-action" onClick={() => handleEdit()}>
+              <button
+                className="waves-effect blue darken-2 btn"
+                onClick={() => handleEdit()}
+              >
                 Edit
-              </a>
+              </button>
             </Fragment>
           ) : (
             <Fragment>
-              <a className="btn-action" onClick={e => handleSubmit(e)}>
+              <button
+                disabled={!isEnabled}
+                className="waves-effect blue darken-2 btn "
+                onClick={e => handleSubmit(e)}
+              >
                 Submit
-              </a>
+              </button>
             </Fragment>
           )}
 
-          <a className="btn-action" onClick={() => deleteContact(id)}>
+          <button
+            className="waves-effect blue darken-2 btn"
+            onClick={() => deleteContact(id)}
+          >
             Delete
-          </a>
+          </button>
         </div>
       </div>
     </Fragment>

@@ -37,8 +37,8 @@ code {
   padding: 0.2rem;
   color: #fff;
 }
-.btn-action {
-  cursor: pointer;
+.btn {
+  margin: 0.3rem;
 }
 .edit-input {
   max-width: 12rem;
